@@ -4,6 +4,7 @@ metadata:
   name: fusionauth
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    ingress.kubernetes.io/ssl-redirect: "true"
     traefik.ingress.kubernetes.io/router.tls: "true"
     cert-manager.io/issuer: letsencrypt-issuer
     acme.cert-manager.io/http01-ingress-class: traefik-cert-manager
