@@ -5,6 +5,9 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/issuer: letsencrypt-issuer
+    acme.cert-manager.io/http01-ingress-class: traefik-cert-manager
+    cert-manager.io/common-name: auth.aaron-miller.me
 spec:
   rules:
     - host: auth.aaron-miller.me
@@ -13,3 +16,7 @@ spec:
         - backend:
             serviceName: fusionauth
             servicePort: 9011
+  tls:
+    - hosts:
+        - auth.aaron-miller.me
+      secretName: auth.aaron-miller.me-cert

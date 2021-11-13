@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-issuer
+spec:
+  acme:
+    email: me.fusionauth@aaron-miller.me
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: le-private-key
+    solvers:
+      - http01:
+          ingress:
+            class: traefik-cert-manager
